@@ -1,0 +1,31 @@
+<section class="games">
+  <header>
+    <h1>Mass Effect Tracker</h1>
+    <h2>Which Games Have You Played?</h2>
+  </header>
+  <body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+      $(function(){
+        $.get("/games").done( function( data ) {
+          var htmlString = "";
+          
+          $.each(data, function(index, game) {
+            var liElement = '<li><input class="toggle" type = "checkbox">' +
+            game.title +
+            '</input></li>';
+            htmlString += liElement;
+          });
+          var ulGames = $('.game-list');
+          ulGames.html(htmlString);
+        });
+
+    });
+    </script>
+
+    <ul class="game-list">
+      
+    </ul>
+  </body>
